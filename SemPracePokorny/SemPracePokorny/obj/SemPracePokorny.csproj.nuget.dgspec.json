@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\UPCE\\BCSH2\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj": {}
+    "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj": {}
   },
   "projects": {
-    "E:\\UPCE\\BCSH2\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj": {
+    "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\UPCE\\BCSH2\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj",
+        "projectUniqueName": "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj",
         "projectName": "SemPracePokorny",
-        "projectPath": "E:\\UPCE\\BCSH2\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj",
+        "projectPath": "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj",
         "packagesPath": "C:\\Users\\ondra\\.nuget\\packages\\",
-        "outputPath": "E:\\UPCE\\BCSH2\\SemPracePokorny\\SemPracePokorny\\obj\\",
+        "outputPath": "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ondra\\AppData\\Roaming\\NuGet\\NuGet.Config",
