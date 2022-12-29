@@ -5,9 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemPracePokorny"
         xmlns:views ="clr-namespace:SemPracePokorny.View"
+        xmlns:VM ="clr-namespace:SemPracePokorny.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
+    <Window.DataContext>
+        <VM:PobockaViewModel/>
+    </Window.DataContext>
     <Grid>
-        <views:PobockaView x:Name="PobockaViewControl"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="165*" />
+                <RowDefinition Height="130*" />
+                <RowDefinition Height="90" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Město" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="searchText" VerticalAlignment="Center" Margin="5,3" Width="250" Height="25" VerticalContentAlignment="Center"/>
+                <Button x:Name="PesqBtn" Content="Find" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
+                <Button x:Name="zobrazKnihy" Content="Zobraz knihy" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding ShowBooksCommand}"/>
+                
+                
+            </StackPanel>
+            <DataGrid AutoGenerateColumns="False" x:Name="master" CanUserAddRows="False" CanUserDeleteRows="True" Grid.Row="1" 
+                  ItemsSource="{Binding Pobocky}" SelectedItem="{Binding VybranaPobocka, Mode=TwoWay}" Margin="0,7,0,8">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="pobockaId" Binding="{Binding Path=Id}" Header="Pobočka Id" Width="80" />
+                    <DataGridTextColumn x:Name="mesto" Binding="{Binding Path=Mesto}" Header="Město" Width="160" />
+                    <DataGridTextColumn x:Name="ulice" Binding="{Binding Path=Ulice}" Header="Ulice" Width="160" />
+                    <DataGridTextColumn x:Name="cisloPop" Binding="{Binding Path=CisloPopisne}" Header="Číslo popisné" Width="100" />
+                    <DataGridTextColumn x:Name="psc" Binding="{Binding Path=Psc}" Header="Psč" Width="130" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <views:PobockaDetail Grid.Row="2" DataContext="{Binding VybranaPobocka}" Margin="5,5,5,0" x:Name="detail" Height="160" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
+                <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
+                <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />
+                <Button Width="75" Height="25" Margin="5" Content="Save" Command="{Binding SaveCommand}" />
+                <Button x:Name="loadBtn" Content="Load" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding LoadCommand}" CommandParameter="{Binding ElementName=fileName,Path=Text}"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>

@@ -1,0 +1,50 @@
+﻿<Window x:Class="SemPracePokorny.View.KnihaView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SemPracePokorny.View"
+        xmlns:views ="clr-namespace:SemPracePokorny.View"
+        xmlns:VM ="clr-namespace:SemPracePokorny.ViewModel"
+        
+        mc:Ignorable="d"
+        Title="KnihaView" Height="450" Width="800">
+    
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="165*" />
+                <RowDefinition Height="130*" />
+                <RowDefinition Height="90" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Příjmení autora" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="searchText" VerticalAlignment="Center" Margin="5,3" Width="250" Height="25" VerticalContentAlignment="Center"/>
+                <Button x:Name="PesqBtn" Content="Find" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
+
+
+            </StackPanel>
+            <DataGrid AutoGenerateColumns="False" x:Name="master" CanUserAddRows="False" CanUserDeleteRows="True" Grid.Row="1" 
+                  ItemsSource="{Binding Knihy}" SelectedItem="{Binding VybranaKniha, Mode=TwoWay}" Margin="0,7,0,8">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="knihaId" Binding="{Binding Path=Id}" Header="Pobočka Id" Width="80" />
+                    <DataGridTextColumn x:Name="jmeno" Binding="{Binding Path=Nazev}" Header="Název" Width="160" />
+                    <DataGridTextColumn x:Name="jmenoAutora" Binding="{Binding Path=JmenoAutora}" Header="Jméno autora" Width="160" />
+                    <DataGridTextColumn x:Name="prijmeniAutora" Binding="{Binding Path=PrijmeniAutora}" Header="Příjmení autora" Width="160" />
+                    <DataGridTextColumn x:Name="zanr" Binding="{Binding Path=Zanr}" Header="Žánr" Width="100" />
+                    <DataGridTextColumn x:Name="zakaznik" Binding="{Binding Path=Zakaznik}" Header="Zákazník" Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+          
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
+                <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
+                <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />
+                
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

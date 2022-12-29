@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9rwrabp4zrJ3Fp+ByirDYYYtNkHwgGHIz51Gp4QMH32dW/R/Sm0S71WIvd3Fe0Pug9uNywURC8PltYU75RgNeQ==",
+  "dgSpecHash": "sOFOPKWMbcWRwFMG/cGSZlwY6W202jvVzT1V2X43BC8pe8XjNWcWRG3cwL2XqcNDMMZRivtae3jyXJ2dwvB6Zg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ondra\\.nuget\\packages\\communitytoolkit.mvvm\\8.0.0\\communitytoolkit.mvvm.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SemPracePokorny.Model
 {
-    internal class Zakaznik : INotifyPropertyChanged
+    public class Zakaznik : INotifyPropertyChanged
     {
         private int id;
         private string jmeno;
@@ -23,7 +24,7 @@ namespace SemPracePokorny.Model
             this.rodneCislo = rodneCislo;
             this.telefon = telefon;
             id = idCount++;
-            this.VypujceneKnihy = new List<Kniha>();
+            this.VypujceneKnihy = new ObservableCollection<Kniha>();
         }
         public Zakaznik(int fileID, string jmeno, string prijmeni, int rodneCislo, int telefon)
         {
@@ -33,7 +34,7 @@ namespace SemPracePokorny.Model
             this.telefon = telefon;
             id = fileID;
             idCount = fileID + 1;
-            this.VypujceneKnihy = new List<Kniha>();
+            this.VypujceneKnihy = new ObservableCollection<Kniha>();
         }
         public int Id
         {
@@ -96,7 +97,7 @@ namespace SemPracePokorny.Model
             }
         }
         
-        public List<Kniha> VypujceneKnihy { get; set; }
+        public ObservableCollection<Kniha> VypujceneKnihy { get; set; }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;

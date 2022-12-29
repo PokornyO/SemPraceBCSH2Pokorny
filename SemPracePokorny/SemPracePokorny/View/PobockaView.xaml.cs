@@ -13,13 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace SemPracePokorny.View
 {
     /// <summary>
     /// Interakční logika pro PobockaView.xaml
     /// </summary>
-    public partial class PobockaView : UserControl
+    public partial class PobockaView : Page
     {
         public PobockaView()
         {

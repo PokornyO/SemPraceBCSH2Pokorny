@@ -1,49 +1,98 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SemPracePokorny.Model;
+using SemPracePokorny.View;
 
 namespace SemPracePokorny.ViewModel
 {
-    internal class PobockaViewModel
+    internal partial class PobockaViewModel : ObservableObject
     {
-        public MyICommand DeleteCommand { get; set; }
-        private Pobocka selectedPobocka;
-        public ObservableCollection<Pobocka> Pobocky { get; set; }
-        public Pobocka SelectedPobocka
-        {
-            get { return selectedPobocka; }
+        
 
-            set
-            {
-                selectedPobocka = value;
-                DeleteCommand.RaiseCanExecuteChanged();
-            }
-        }
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
+        private Pobocka? _vybranaPobocka;
+        [ObservableProperty]
+        public ObservableCollection<Pobocka> pobocky;
         public PobockaViewModel()
         {
-            LoadPobocky();
-            DeleteCommand = new MyICommand(OnDelete, CanDelete);
+            pobocky = new ObservableCollection<Pobocka>();
+            Pobocka pobocka = new Pobocka("Pardubice", "Češkova", 1596, 53002);
+            Pobocky.Add(pobocka);
         }
 
-        private bool CanDelete()
+        
+
+        [RelayCommand]
+        private void Add()
         {
-            return SelectedPobocka != null;
+            Pobocka pobocka = new Pobocka("Pardubice", "Češkova", 1596, 53002);
+            pobocky.Add(pobocka);
+            _vybranaPobocka = pobocka;
+            OnPropertyChanged("VybranaPobocka");
+
+
         }
 
-        private void OnDelete()
+        [RelayCommand(CanExecute = "JeVybranaPobocka")]
+        private void Remove()
         {
-            Pobocky.Remove(SelectedPobocka);
+            if (_vybranaPobocka != null)
+            {
+                pobocky.Remove(_vybranaPobocka);
+                _vybranaPobocka = null;
+                
+            }
         }
-        public void LoadPobocky()
+
+        private bool JeVybranaPobocka() => _vybranaPobocka != null;
+
+        [RelayCommand]
+        private void Save()
         {
-            Pobocky = new ObservableCollection<Pobocka>();
-            Pobocky.Add(new Pobocka("Chotebor", "Na Chmelnici", 1596, 58301));
-            Pobocky.Add(new Pobocka("Pardubice", "Na Chmelnici", 1596, 58301));
-            Pobocky.Add(new Pobocka("Havličkův Brod", "Na Chmelnici", 1596, 58301));
+            
+        }
+
+        [RelayCommand]
+        private void Search(string textToSearch)
+        {
+            var coll = CollectionViewSource.GetDefaultView(pobocky);
+            if (!string.IsNullOrWhiteSpace(textToSearch))
+                coll.Filter = c => ((Pobocka)c).Mesto.ToLower().Contains(textToSearch.ToLower());
+            else
+                coll.Filter = null;
+        }
+        [RelayCommand]
+        private void ShowBooks()
+        {
+            if(_vybranaPobocka!=null)
+            {
+                KnihaViewModel knihaVM = new KnihaViewModel(_vybranaPobocka.Knihy);
+                KnihaView knihaV = new KnihaView();
+                knihaV.DataContext = knihaVM;
+                knihaV.Show();
+                
+            }
+            
+
+
+        }
+        [RelayCommand]
+        private void Load(string fileName)
+        {
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                pobocky.Add(new Pobocka("Pardubice", "Češkova", 1596, 53002));
+                
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SemPracePokorny.Model
 {
-    enum Zanr
+    public enum Zanr
     {
        Detektivka,
        Thriller,

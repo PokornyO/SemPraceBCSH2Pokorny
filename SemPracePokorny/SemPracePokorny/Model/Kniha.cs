@@ -7,130 +7,37 @@ using System.Threading.Tasks;
 
 namespace SemPracePokorny.Model
 {
-    internal class Kniha : INotifyPropertyChanged
+    public class Kniha
     {
-        private int id;
-        private string jmeno;
-        private string jmenoAutora;
-        private string prijmeniAutora;
-        private Zanr zanr;
-        private DateOnly datumVydani;
-        private Zakaznik? zakaznik;
+        public int Id { get; set; }
+        
+        public string Nazev { get; set; }
+        public string JmenoAutora { get; set; }
+        public string PrijmeniAutora { get; set; }
+        
+        public Zanr Zanr { get; set; }
+        
+        public Zakaznik? Zakaznik { get; set; }
         private static int idCount = 0;
 
-        public Kniha(string jmeno, string jmenoAutora, string prijmeniAutora, Zanr zanr, DateOnly date)
+        public Kniha(string jmeno, string jmenoAutora, string prijmeniAutora, Zanr zanr)
         {
-            this.jmeno = jmeno;
-            this.jmenoAutora = jmenoAutora;
-            this.prijmeniAutora = prijmeniAutora;
-            this.zanr = zanr;
-            this.datumVydani = date;
-            this.id = idCount++;
+            this.Nazev = jmeno;
+            this.JmenoAutora = jmenoAutora;
+            this.PrijmeniAutora = prijmeniAutora;
+            this.Zanr = zanr;
+            this.Id = idCount++;
         }
-        public Kniha(int fileId, string jmeno, string jmenoAutora, string prijmeniAutora, Zanr zanr, DateOnly date)
+        public Kniha(int fileId, string jmeno, string jmenoAutora, string prijmeniAutora, Zanr zanr)
         {
-            this.jmeno = jmeno;
-            this.jmenoAutora = jmenoAutora;
-            this.prijmeniAutora = prijmeniAutora;
-            this.zanr = zanr;
-            this.datumVydani = date;
-            this.id = fileId;
+            this.Nazev = jmeno;
+            this.JmenoAutora = jmenoAutora;
+            this.PrijmeniAutora = prijmeniAutora;
+            this.Zanr = zanr;
+            this.Id = fileId;
             idCount = fileId++;
         }
 
-        public int Id
-        {
-            get { return id; }
-            set
-            {
-                if (id != value)
-                {
-                    id = value;
-                    RaisePropertyChanged("Id");
-                }
-            }
-        }
-        public string Jmeno
-        {
-            get { return jmeno; }
-            set
-            {
-                if (jmeno != value)
-                {
-                    jmeno = value;
-                    RaisePropertyChanged("Jmeno");
-                }
-            }
-        }
-        public string JmenoAutora
-        {
-            get { return jmenoAutora; }
-            set
-            {
-                if (jmenoAutora != value)
-                {
-                    jmenoAutora = value;
-                    RaisePropertyChanged("JmenoAutora");
-                }
-            }
-        }
-        public string PrijmeniAutora
-        {
-            get { return prijmeniAutora; }
-            set
-            {
-                if (prijmeniAutora != value)
-                {
-                    prijmeniAutora  = value;
-                    RaisePropertyChanged("PrijmeniAutora");
-                }
-            }
-        }
-        public Zanr Zanr
-        {
-            get { return zanr; }
-            set
-            {
-                if (zanr != value)
-                {
-                    zanr = value;
-                    RaisePropertyChanged("Zanr");
-                }
-            }
-        }
-        public DateOnly DatumVydani
-        {
-            get { return datumVydani; }
-            set
-            {
-                if (datumVydani != value)
-                {
-                    datumVydani = value;
-                    RaisePropertyChanged("DatumVydani");
-                }
-            }
-        }
-        public Zakaznik Zakaznik
-        {
-            get { return zakaznik; }
-            set
-            {
-                if (zakaznik != value)
-                {
-                    zakaznik = value;
-                    RaisePropertyChanged("Zakaznik");
-                }
-            }
-        }
-
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void RaisePropertyChanged(string property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
+        
     }
 }
