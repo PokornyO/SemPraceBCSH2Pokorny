@@ -5,13 +5,11 @@ C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\bin\Debug\net6.0-windows\SemPracePokorny.pdb
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.csproj.AssemblyReference.cache
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\PobockaView.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny_MarkupCompile.cache
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny_MarkupCompile.lref
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\PobockaView.baml
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.g.resources
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.AssemblyInfoInputs.cache
@@ -28,3 +26,5 @@ C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.csproj.CopyComplete
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\KnihaView.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\KnihaView.baml
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\ZakaznikView.g.cs
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\ZakaznikView.baml

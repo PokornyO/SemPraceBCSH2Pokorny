@@ -6,23 +6,39 @@
         xmlns:local="clr-namespace:SemPracePokorny.View"
         xmlns:views ="clr-namespace:SemPracePokorny.View"
         xmlns:VM ="clr-namespace:SemPracePokorny.ViewModel"
-        
+        xmlns:Model="clr-namespace:SemPracePokorny.Model"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="KnihaView" Height="450" Width="800">
-    
+        Title="KnihaView" Height="550" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Model:Zanr"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
                 <RowDefinition Height="165*" />
-                <RowDefinition Height="130*" />
+                <RowDefinition Height="160*" />
                 <RowDefinition Height="90" />
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Příjmení autora" VerticalAlignment="Center" Margin="5"/>
-                <TextBox x:Name="searchText" VerticalAlignment="Center" Margin="5,3" Width="250" Height="25" VerticalContentAlignment="Center"/>
-                <Button x:Name="PesqBtn" Content="Find" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
-                    Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
+                <TextBox x:Name="searchText" VerticalAlignment="Center" Margin="5,3" Width="100" Height="25" VerticalContentAlignment="Center"/>
+                <Button x:Name="prijmeniBtn" Content="Najdi" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchLastnameCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
+                <TextBlock Text="Název knihy" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="searchNazev" VerticalAlignment="Center" Margin="5,3" Width="100" Height="25" VerticalContentAlignment="Center"/>
+                <Button x:Name="nazevBtn" Content="Najdi" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchNameCommand}" CommandParameter="{Binding ElementName=searchNazev,Path=Text}"/>
+                <TextBlock Text="Žánr" VerticalAlignment="Center" Margin="5"/>
+                <ComboBox x:Name="searchZanr" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding Path=ZanrFiltr }" Width="80" Margin="3" VerticalAlignment="Center" />
+                <Button x:Name="zanrBtn" Content="Najdi" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchGenreCommand}" CommandParameter="{Binding ElementName=searchZanr,Path=SelectedItem}"/>
 
 
             </StackPanel>
@@ -37,8 +53,33 @@
                     <DataGridTextColumn x:Name="zakaznik" Binding="{Binding Path=Zakaznik}" Header="Zákazník" Width="100" />
                 </DataGrid.Columns>
             </DataGrid>
-
-          
+            <Grid Name="grid1" DataContext="{Binding VybranaKniha}" Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Content="Kniha Id:" Grid.Column="0" Grid.Row="0"  Margin="3" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="0"   Margin="3" Name="idDetail" Text="{Binding Path=Id}" VerticalAlignment="Center"  />
+                <Label Content="Název:" Grid.Column="0" Grid.Row="1"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="1"   Margin="3" Name="nazevDetail" Text="{Binding Path=Nazev, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Jméno autora:" Grid.Column="0" Grid.Row="2"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="2"   Margin="3" Name="jmenoDetail" Text="{Binding Path=JmenoAutora, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Příjmení autora:" Grid.Column="0" Grid.Row="3"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="3"   Margin="3" Name="prijmeniDetail" Text="{Binding Path=PrijmeniAutora, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Žánr:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+                <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" Grid.Column="1" Grid.Row="4" Margin="3" Name="zanrDetail" SelectedItem="{ Binding Path=Zanr, Mode=TwoWay}" VerticalAlignment="Center" />
+                <Label Content="Zákazník:" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Zakaznik, Mode=OneWay}" VerticalAlignment="Center" />
+            </Grid>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
                 <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
                 <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />

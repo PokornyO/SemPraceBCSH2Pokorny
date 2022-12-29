@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SemPracePokorny.Model;
@@ -38,6 +39,8 @@ namespace SemPracePokorny.ViewModel
             pobocky.Add(pobocka);
             _vybranaPobocka = pobocka;
             OnPropertyChanged("VybranaPobocka");
+            RemoveCommand.NotifyCanExecuteChanged();
+            
 
 
         }
@@ -62,13 +65,18 @@ namespace SemPracePokorny.ViewModel
         }
 
         [RelayCommand]
-        private void Search(string textToSearch)
+        private void SearchLastname(string mesto)
         {
             var coll = CollectionViewSource.GetDefaultView(pobocky);
-            if (!string.IsNullOrWhiteSpace(textToSearch))
-                coll.Filter = c => ((Pobocka)c).Mesto.ToLower().Contains(textToSearch.ToLower());
+            if (!string.IsNullOrWhiteSpace(mesto))
+            {
+                coll.Filter = c => ((Pobocka)c).Mesto.ToLower().Contains(mesto.ToLower());
+            } 
             else
+            {
                 coll.Filter = null;
+            }
+                
         }
         [RelayCommand]
         private void ShowBooks()
@@ -81,9 +89,18 @@ namespace SemPracePokorny.ViewModel
                 knihaV.Show();
                 
             }
-            
+        }
+        [RelayCommand]
+        private void ShowCustomers()
+        {
+            if (_vybranaPobocka != null)
+            {
+                ZakaznikViewModel knihaVM = new ZakaznikViewModel(_vybranaPobocka.Zakaznici);
+                ZakaznikView zakaznikV = new ZakaznikView();
+                zakaznikV.DataContext = knihaVM;
+                zakaznikV.Show();
 
-
+            }
         }
         [RelayCommand]
         private void Load(string fileName)

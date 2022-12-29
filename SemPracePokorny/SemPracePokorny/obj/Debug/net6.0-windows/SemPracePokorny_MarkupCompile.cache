@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\App.xaml
-41442868178
+41196292728
 
-14607330787
+14822492280
 195-27813490
-MainWindow.xaml;View\KnihaView.xaml;View\PobockaDetail.xaml;View\PobockaView.xaml;
+MainWindow.xaml;View\KnihaView.xaml;View\PobockaDetail.xaml;View\ZakaznikView.xaml;
 
 False
 

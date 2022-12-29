@@ -23,9 +23,11 @@
                 <TextBlock Text="Město" VerticalAlignment="Center" Margin="5"/>
                 <TextBox x:Name="searchText" VerticalAlignment="Center" Margin="5,3" Width="250" Height="25" VerticalContentAlignment="Center"/>
                 <Button x:Name="PesqBtn" Content="Find" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
-                    Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
+                    Command="{Binding SearchLastnameCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
                 <Button x:Name="zobrazKnihy" Content="Zobraz knihy" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
                     Command="{Binding ShowBooksCommand}"/>
+                <Button x:Name="zobrazZakazniky" Content="Zobraz zákazníky" Width="100" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding ShowCustomersCommand}"/>
                 
                 
             </StackPanel>

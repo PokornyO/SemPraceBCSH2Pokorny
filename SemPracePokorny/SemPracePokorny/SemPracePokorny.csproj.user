@@ -8,7 +8,7 @@
     <Compile Update="View\PobockaDetail.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\PobockaView.xaml.cs">
+    <Compile Update="View\ZakaznikView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -19,7 +19,7 @@
     <Page Update="View\PobockaDetail.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\PobockaView.xaml">
+    <Page Update="View\ZakaznikView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

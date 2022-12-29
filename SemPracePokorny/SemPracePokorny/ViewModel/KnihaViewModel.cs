@@ -18,6 +18,8 @@ namespace SemPracePokorny.ViewModel
         private Kniha? _vybranaKniha;
         [ObservableProperty]
         public ObservableCollection<Kniha> knihy;
+        [ObservableProperty]
+        private Zanr? zanrFiltr;
 
 
         public KnihaViewModel(ObservableCollection<Kniha> knihyPobocky)
@@ -64,14 +66,48 @@ namespace SemPracePokorny.ViewModel
         }
 
         [RelayCommand]
-        private void Search(string textToSearch)
+        private void SearchLastname(string prijmeni)
         {
             var coll = CollectionViewSource.GetDefaultView(knihy);
-            if (!string.IsNullOrWhiteSpace(textToSearch))
-                coll.Filter = c => ((Kniha)c).PrijmeniAutora.ToLower().Contains(textToSearch.ToLower());
+            if (!string.IsNullOrWhiteSpace(prijmeni))
+            {
+                coll.Filter = c => ((Kniha)c).PrijmeniAutora.ToLower().Contains(prijmeni.ToLower());
+            }        
             else
+            {
                 coll.Filter = null;
+            }   
             OnPropertyChanged("Knihy");
+        }
+        [RelayCommand]
+        private void SearchName(string nazev)
+        {
+            var coll = CollectionViewSource.GetDefaultView(knihy);
+            if (!string.IsNullOrWhiteSpace(nazev))
+            {
+                coll.Filter = c => ((Kniha)c).Nazev.ToLower().Contains(nazev.ToLower());
+            }  
+            else
+            {
+                coll.Filter = null;
+            } 
+            OnPropertyChanged("Knihy");
+        }
+        [RelayCommand]
+        private void SearchGenre(Zanr? zanr)
+        {
+            var coll = CollectionViewSource.GetDefaultView(knihy);
+            if (zanr!=null)
+            {
+                coll.Filter = c => ((Kniha)c).Zanr.Equals(zanr);
+            }          
+            else
+            {
+                coll.Filter = null;
+            }
+            zanrFiltr = null;
+            OnPropertyChanged("Knihy");
+            OnPropertyChanged("ZanrFiltr");
         }
         [RelayCommand]
         private void Load(string fileName)

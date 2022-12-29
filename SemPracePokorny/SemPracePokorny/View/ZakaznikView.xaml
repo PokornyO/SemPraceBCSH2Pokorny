@@ -1,0 +1,71 @@
+﻿<Window x:Class="SemPracePokorny.View.ZakaznikView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SemPracePokorny.View"
+        mc:Ignorable="d"
+        Title="ZakaznikView" Height="500" Width="800">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="165*" />
+                <RowDefinition Height="160*" />
+                <RowDefinition Height="90" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Příjmení autora" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="searchText" VerticalAlignment="Center" Margin="5,3" Width="250" Height="25" VerticalContentAlignment="Center"/>
+                <Button x:Name="prijmeniBtn" Content="Najdi" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchLastnameCommand}" CommandParameter="{Binding ElementName=searchText,Path=Text}"/>
+                <TextBlock Text="Rodné číslo" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="searchRodneC" VerticalAlignment="Center" Margin="5,3" Width="150" Height="25" VerticalContentAlignment="Center"/>
+                <Button x:Name="rodneCBtn" Content="Najdi" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
+                    Command="{Binding SearchNumberCommand}" CommandParameter="{Binding ElementName=searchRodneC,Path=Text}"/>
+
+
+            </StackPanel>
+            <DataGrid AutoGenerateColumns="False" x:Name="master" CanUserAddRows="False" CanUserDeleteRows="True" Grid.Row="1" 
+                  ItemsSource="{Binding Zakaznici}" SelectedItem="{Binding VybranyZakaznik, Mode=TwoWay}" Margin="0,7,0,8">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="zakaznikId" Binding="{Binding Path=Id}" Header="Zákazník Id" Width="80" />
+                    <DataGridTextColumn x:Name="jmeno" Binding="{Binding Path=Jmeno}" Header="Jméno" Width="160" />
+                    <DataGridTextColumn x:Name="prijmeni" Binding="{Binding Path=Prijmeni}" Header="Příjmení" Width="160" />
+                    <DataGridTextColumn x:Name="rodneCislo" Binding="{Binding Path=RodneCislo}" Header="Rodné číslo" Width="160" />
+                    <DataGridTextColumn x:Name="telefon" Binding="{Binding Path=Telefon}" Header="Telefon" Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid Name="grid1" DataContext="{Binding VybranyZakaznik}" Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Content="Zákazník Id:" Grid.Column="0" Grid.Row="0"  Margin="3" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="0"   Margin="3" Name="idDetail" Text="{Binding Path=Id}" VerticalAlignment="Center"  />
+                <Label Content="Jméno:" Grid.Column="0" Grid.Row="1"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="1"   Margin="3" Name="jmenoDetail" Text="{Binding Path=Jmeno, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Příjmení:" Grid.Column="0" Grid.Row="2"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="2"   Margin="3" Name="prijmeniDetail" Text="{Binding Path=Prijmeni, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Rodné číslo:" Grid.Column="0" Grid.Row="3"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="3"   Margin="3" Name="rodneCisloD" Text="{Binding Path=RodneCislo, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Telefon:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="4" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Telefon, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" />
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
+                <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
+                <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>
