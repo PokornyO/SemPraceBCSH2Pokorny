@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "sOFOPKWMbcWRwFMG/cGSZlwY6W202jvVzT1V2X43BC8pe8XjNWcWRG3cwL2XqcNDMMZRivtae3jyXJ2dwvB6Zg==",
+  "dgSpecHash": "ZJbzmuEHRJ3NOUPx6E/YCN+4y2rG67WSsrI8gNxdD6Vb8C9ULHTQ7dTbJJF8OLs+ied5nE4NYlh446+O4xLixA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ondra\\source\\repos\\SemPraceBCSH2Pokorny\\SemPracePokorny\\SemPracePokorny\\SemPracePokorny.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ondra\\.nuget\\packages\\communitytoolkit.mvvm\\8.0.0\\communitytoolkit.mvvm.8.0.0.nupkg.sha512"
+    "C:\\Users\\ondra\\.nuget\\packages\\communitytoolkit.mvvm\\8.0.0\\communitytoolkit.mvvm.8.0.0.nupkg.sha512",
+    "C:\\Users\\ondra\\.nuget\\packages\\litedb\\5.0.15\\litedb.5.0.15.nupkg.sha512"
   ],
   "logs": []
 }

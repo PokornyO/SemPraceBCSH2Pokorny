@@ -16,6 +16,8 @@ namespace SemPracePokorny.ViewModel
     {
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
+        [NotifyCanExecuteChangedFor(nameof(BorrowCommand))]
+        [NotifyCanExecuteChangedFor(nameof(ReturnCommand))]
         private Kniha? _vybranaKniha;
         [ObservableProperty]
         public ObservableCollection<Kniha> knihy;
@@ -46,11 +48,13 @@ namespace SemPracePokorny.ViewModel
             _vybranaKniha = kniha;
             OnPropertyChanged("VybranaKniha");
             RemoveCommand.NotifyCanExecuteChanged();
+            BorrowCommand.NotifyCanExecuteChanged();
+            ReturnCommand.NotifyCanExecuteChanged();
 
 
         }
 
-        [RelayCommand(CanExecute = "JeVybranaKniha")]
+        [RelayCommand(CanExecute = "IsBookSelected")]
         private void Remove()
         {
             if (_vybranaKniha != null)
@@ -61,7 +65,7 @@ namespace SemPracePokorny.ViewModel
             }
         }
 
-        private bool JeVybranaKniha() => _vybranaKniha != null;
+        private bool IsBookSelected() => _vybranaKniha != null;
 
         [RelayCommand]
         private void Save()
@@ -122,7 +126,7 @@ namespace SemPracePokorny.ViewModel
                 OnPropertyChanged("Knihy");
             }
         }
-        [RelayCommand]
+        [RelayCommand(CanExecute = "IsBookSelected")]
         private void Borrow()
         {
             if(_vybranaKniha!= null && _vybranaKniha.Zakaznik == null)
@@ -131,13 +135,14 @@ namespace SemPracePokorny.ViewModel
                 VypujceniView vypujceniV = new VypujceniView();
                 vypujceniV.DataContext = vypujceniVM;
                 vypujceniV.ShowDialog();
+                _vybranaKniha = null;
                 OnPropertyChanged("VybranaKniha");
                 OnPropertyChanged("Kniy");
                 
                
             }
         }
-        [RelayCommand]
+        [RelayCommand(CanExecute = "IsBookSelected")]
         private void Return()
         {
             if(_vybranaKniha!= null)

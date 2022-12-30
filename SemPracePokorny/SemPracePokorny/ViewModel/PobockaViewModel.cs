@@ -20,6 +20,8 @@ namespace SemPracePokorny.ViewModel
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
+        [NotifyCanExecuteChangedFor(nameof(ShowBooksCommand))]
+        [NotifyCanExecuteChangedFor(nameof(ShowCustomersCommand))]
         private Pobocka? _vybranaPobocka;
         [ObservableProperty]
         public ObservableCollection<Pobocka> pobocky;
@@ -40,12 +42,14 @@ namespace SemPracePokorny.ViewModel
             _vybranaPobocka = pobocka;
             OnPropertyChanged("VybranaPobocka");
             RemoveCommand.NotifyCanExecuteChanged();
+            ShowCustomersCommand.NotifyCanExecuteChanged();
+            ShowBooksCommand.NotifyCanExecuteChanged();
             
 
 
         }
 
-        [RelayCommand(CanExecute = "JeVybranaPobocka")]
+        [RelayCommand(CanExecute = "IsSelected")]
         private void Remove()
         {
             if (_vybranaPobocka != null)
@@ -56,7 +60,7 @@ namespace SemPracePokorny.ViewModel
             }
         }
 
-        private bool JeVybranaPobocka() => _vybranaPobocka != null;
+        private bool IsSelected() => _vybranaPobocka != null;
 
         [RelayCommand]
         private void Save()
@@ -78,7 +82,7 @@ namespace SemPracePokorny.ViewModel
             }
                 
         }
-        [RelayCommand]
+        [RelayCommand(CanExecute = "IsSelected")]
         private void ShowBooks()
         {
             if(_vybranaPobocka!=null)
@@ -86,19 +90,19 @@ namespace SemPracePokorny.ViewModel
                 KnihaViewModel knihaVM = new KnihaViewModel(_vybranaPobocka.Knihy, _vybranaPobocka.Zakaznici);
                 KnihaView knihaV = new KnihaView();
                 knihaV.DataContext = knihaVM;
-                knihaV.Show();
+                knihaV.ShowDialog();
                 
             }
         }
-        [RelayCommand]
+        [RelayCommand(CanExecute = "IsSelected")]
         private void ShowCustomers()
         {
             if (_vybranaPobocka != null)
             {
-                ZakaznikViewModel knihaVM = new ZakaznikViewModel(_vybranaPobocka.Zakaznici);
+                ZakaznikViewModel knihaVM = new ZakaznikViewModel(_vybranaPobocka.Zakaznici, _vybranaPobocka.Knihy);
                 ZakaznikView zakaznikV = new ZakaznikView();
                 zakaznikV.DataContext = knihaVM;
-                zakaznikV.Show();
+                zakaznikV.ShowDialog();
 
             }
         }

@@ -30,3 +30,6 @@ C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\ZakaznikView.baml
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\VypujceniView.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\VypujceniView.baml
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\bin\Debug\net6.0-windows\LiteDB.dll
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\VypujceneKnihyView.g.cs
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\VypujceneKnihyView.baml

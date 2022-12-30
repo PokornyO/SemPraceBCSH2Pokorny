@@ -16,14 +16,18 @@ namespace SemPracePokorny.ViewModel
     {
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(RemoveCommand))]
+        [NotifyCanExecuteChangedFor(nameof(ShowBooksCommand))]
         private Zakaznik? _vybranyZakaznik;
         [ObservableProperty]
         public ObservableCollection<Zakaznik> zakaznici;
-        public ZakaznikViewModel(ObservableCollection<Zakaznik> zakazniciPobocky)
+        private ObservableCollection<Kniha> knihy;
+        public ZakaznikViewModel(ObservableCollection<Zakaznik> zakazniciPobocky, ObservableCollection<Kniha> knihy)
         {
             zakaznici = zakazniciPobocky;
+            this.knihy = knihy;
             Zakaznik zakaznik = new Zakaznik("Ondřej", "Pokorný", 0005131234, 734795453);
             zakaznici.Add(zakaznik);
+            this.knihy = knihy;
         }
 
 
@@ -36,11 +40,12 @@ namespace SemPracePokorny.ViewModel
             _vybranyZakaznik = zakaznik;
             OnPropertyChanged("VybranyZakaznik");
             RemoveCommand.NotifyCanExecuteChanged();
+            ShowBooksCommand.NotifyCanExecuteChanged();
 
 
         }
 
-        [RelayCommand(CanExecute = "JeVybranZakaznik")]
+        [RelayCommand(CanExecute = "IsCustomerSelected")]
         private void Remove()
         {
             if (_vybranyZakaznik != null)
@@ -51,7 +56,7 @@ namespace SemPracePokorny.ViewModel
             }
         }
 
-        private bool JeVybranZakaznik() => _vybranyZakaznik != null;
+        private bool IsCustomerSelected() => _vybranyZakaznik != null;
 
         [RelayCommand]
         private void Save()
@@ -94,6 +99,25 @@ namespace SemPracePokorny.ViewModel
             {
                 zakaznici.Add(new Zakaznik("Ondřej", "Pokorný", 0005131234, 734795453));
 
+            }
+        }
+        [RelayCommand(CanExecute = "IsCustomerSelected")]
+        private void ShowBooks()
+        {
+            if(_vybranyZakaznik != null)
+            {
+                ObservableCollection<Kniha> vypKnihy = new ObservableCollection<Kniha>();
+                foreach(Kniha kniha in knihy)
+                {
+                    if(kniha.Zakaznik == _vybranyZakaznik)
+                    {
+                        vypKnihy.Add(kniha);
+                    }
+                }
+                VypKnihyViewModel vypKnihyVm = new VypKnihyViewModel(vypKnihy);
+                VypujceneKnihyView vypKnihyV = new VypujceneKnihyView();
+                vypKnihyV.DataContext = vypKnihyVm;
+                vypKnihyV.ShowDialog();
             }
         }
     }

@@ -50,10 +50,9 @@
                     <DataGridTextColumn x:Name="jmenoAutora" Binding="{Binding Path=JmenoAutora}" Header="Jméno autora" Width="160" />
                     <DataGridTextColumn x:Name="prijmeniAutora" Binding="{Binding Path=PrijmeniAutora}" Header="Příjmení autora" Width="160" />
                     <DataGridTextColumn x:Name="zanr" Binding="{Binding Path=Zanr}" Header="Žánr" Width="100" />
-                    <DataGridTextColumn x:Name="zakaznik" Binding="{Binding Path=Zakaznik}" Header="Zákazník" Width="100" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Grid Name="grid1" DataContext="{Binding VybranaKniha}" Grid.Row="2" >
+            <Grid Name="grid1" DataContext="{Binding VybranaKniha, NotifyOnSourceUpdated=True}" Grid.Row="2" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
@@ -77,7 +76,7 @@
                 <Label Content="Žánr:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
                 <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" Grid.Column="1" Grid.Row="4" Margin="3" Name="zanrDetail" SelectedItem="{ Binding Path=Zanr, Mode=TwoWay}" VerticalAlignment="Center" />
                 <Label Content="Zákazník:" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
-                <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Zakaznik, Mode=OneTime}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Zakaznik, Mode=OneWay, NotifyOnSourceUpdated=True}" VerticalAlignment="Center" />
             </Grid>
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="800">

@@ -60,9 +60,10 @@
                 <TextBox Grid.Column="1" Grid.Row="4" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Telefon, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" />
             </Grid>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
-                <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
-                <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="435">
+                <Button Width="120" Height="25" Margin="5" Content="Přidej zákazníka" Command="{Binding AddCommand}" />
+                <Button Width="120" Height="25" Margin="5" Content="Odeber zákazníka" Command="{Binding RemoveCommand}" />
+                <Button Width="150" Height="25" Margin="5" Content="Zobraz vypujcene knihy" Command="{Binding ShowBooksCommand}" />
 
             </StackPanel>
 

@@ -30,7 +30,7 @@ namespace SemPracePokorny.ViewModel
         {
             if(_vybranyZakaznik != null)
             {
-                vypujcenaKniha.Zakaznik = _vybranyZakaznik;   
+                vypujcenaKniha.Zakaznik = _vybranyZakaznik;
             }
             window.Close();
         }

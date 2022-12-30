@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "SemPracePokorny/1.0.0": {
         "dependencies": {
-          "CommunityToolkit.Mvvm": "8.0.0"
+          "CommunityToolkit.Mvvm": "8.0.0",
+          "LiteDB": "5.0.15"
         },
         "runtime": {
           "SemPracePokorny.dll": {}
@@ -19,6 +20,14 @@
           "lib/net6.0/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.0.1"
+          }
+        }
+      },
+      "LiteDB/5.0.15": {
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "assemblyVersion": "5.0.15.0",
+            "fileVersion": "5.0.15.0"
           }
         }
       }
@@ -36,6 +45,13 @@
       "sha512": "sha512-Jiu2g5WUdXRwzhJkHB+B4JBKP5A5+fp8xKiW/ZQo5PI+DruI7MbPEcK9K/Aw0YzTiWRuG6CBluzYIWN5Eo7BkQ==",
       "path": "communitytoolkit.mvvm/8.0.0",
       "hashPath": "communitytoolkit.mvvm.8.0.0.nupkg.sha512"
+    },
+    "LiteDB/5.0.15": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nucyfCOGSATH553BxplxExP3BOqEwmHt0B57426EIaQjD3CC1Odb52VVCGgTxyYaD2oe3B/cJk8jDo6XiBJqPg==",
+      "path": "litedb/5.0.15",
+      "hashPath": "litedb.5.0.15.nupkg.sha512"
     }
   }
 }

@@ -43,9 +43,9 @@
             </DataGrid>
 
             <views:PobockaDetail Grid.Row="2" DataContext="{Binding VybranaPobocka}" Margin="5,5,5,0" x:Name="detail" Height="160" VerticalAlignment="Top"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
-                <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
-                <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="426">
+                <Button Width="100" Height="25" Margin="5" Content="Přidej pobočku" Command="{Binding AddCommand}" />
+                <Button Width="100" Height="25" Margin="5" Content="Odeber pobočku" Command="{Binding RemoveCommand}" />
                 <Button Width="75" Height="25" Margin="5" Content="Save" Command="{Binding SaveCommand}" />
                 <Button x:Name="loadBtn" Content="Load" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
                     Command="{Binding LoadCommand}" CommandParameter="{Binding ElementName=fileName,Path=Text}"/>
