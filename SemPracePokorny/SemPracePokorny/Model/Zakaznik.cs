@@ -8,105 +8,40 @@ using System.Threading.Tasks;
 
 namespace SemPracePokorny.Model
 {
-    public class Zakaznik : INotifyPropertyChanged
+    public class Zakaznik 
     {
-        private int id;
-        private string jmeno;
-        private string prijmeni;
-        private int rodneCislo;
-        private int telefon;
+        public int Id { get; set; }
+        public string Jmeno { get; set; }
+        public string Prijmeni { get; set; }
+        public int RodneCislo { get; set; }
+        public int Telefon { get; set; }
+        public ObservableCollection<Kniha> VypujceneKnihy { get; set; }
+
         private static int idCount = 0;
 
         public Zakaznik(string jmeno, string prijmeni, int rodneCislo, int telefon)
         {
-            this.jmeno = jmeno;
-            this.prijmeni = prijmeni;
-            this.rodneCislo = rodneCislo;
-            this.telefon = telefon;
-            id = idCount++;
+            this.Jmeno = jmeno;
+            this.Prijmeni = prijmeni;
+            this.RodneCislo = rodneCislo;
+            this.Telefon = telefon;
+            Id = idCount++;
             this.VypujceneKnihy = new ObservableCollection<Kniha>();
         }
         public Zakaznik(int fileID, string jmeno, string prijmeni, int rodneCislo, int telefon)
         {
-            this.jmeno = jmeno;
-            this.prijmeni = prijmeni;
-            this.rodneCislo = rodneCislo;
-            this.telefon = telefon;
-            id = fileID;
+            this.Jmeno = jmeno;
+            this.Prijmeni = prijmeni;
+            this.RodneCislo = rodneCislo;
+            this.Telefon = telefon;
+            Id = fileID;
             idCount = fileID + 1;
             this.VypujceneKnihy = new ObservableCollection<Kniha>();
         }
-        public int Id
-        {
-            get { return id; }
-            set
-            {
-                if (id != value)
-                {
-                    id = value;
-                    RaisePropertyChanged("Id");
-                }
-            }
-        }
-        public string Jmeno
-        {
-            get { return jmeno; }
-            set
-            {
-                if (jmeno != value)
-                {
-                    jmeno = value;
-                    RaisePropertyChanged("Jmeno");
-                }
-            }
-        }
-        public string Prijmeni
-        {
-            get { return prijmeni; }
-            set
-            {
-                if (prijmeni != value)
-                {
-                    prijmeni = value;
-                    RaisePropertyChanged("Prijmeni");
-                }
-            }
-        }
-        public int RodneCislo
-        {
-            get { return rodneCislo; }
-            set
-            {
-                if (rodneCislo != value)
-                {
-                    rodneCislo = value;
-                    RaisePropertyChanged("RodneCislo");
-                }
-            }
-        }
-        public int Telefon
-        {
-            get { return telefon; }
-            set
-            {
-                if (telefon != value)
-                {
-                    telefon = value;
-                    RaisePropertyChanged("Telefon");
-                }
-            }
-        }
-        
-        public ObservableCollection<Kniha> VypujceneKnihy { get; set; }
 
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void RaisePropertyChanged(string property)
+        public override string? ToString()
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+            return Jmeno + " " + Prijmeni + ", " + RodneCislo + ", " + Telefon;
         }
     }
 }

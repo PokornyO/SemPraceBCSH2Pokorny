@@ -77,12 +77,14 @@
                 <Label Content="Žánr:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
                 <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}" Grid.Column="1" Grid.Row="4" Margin="3" Name="zanrDetail" SelectedItem="{ Binding Path=Zanr, Mode=TwoWay}" VerticalAlignment="Center" />
                 <Label Content="Zákazník:" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
-                <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Zakaznik, Mode=OneWay}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="5" Margin="3" Name="zakaznikDetail" Text="{Binding Path=Zakaznik, Mode=OneTime}" VerticalAlignment="Center" />
             </Grid>
             
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="341">
-                <Button Width="75" Height="25" Margin="5" Content="Add" Command="{Binding AddCommand}" />
-                <Button Width="75" Height="25" Margin="5" Content="Remove" Command="{Binding RemoveCommand}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="800">
+                <Button Width="100" Height="25" Margin="5" Content="Přidej knihu" Command="{Binding AddCommand}" />
+                <Button Width="100" Height="25" Margin="5" Content="Odeber knihu" Command="{Binding RemoveCommand}" />
+                <Button Width="100" Height="25" Margin="5" Content="Vypůjči knihu" Command="{Binding BorrowCommand}" />
+                <Button Width="100" Height="25" Margin="5" Content="Vrať knihu" Command="{Binding ReturnCommand}" />
                 
             </StackPanel>
 

@@ -31,7 +31,7 @@ namespace SemPracePokorny.ViewModel
         [RelayCommand]
         private void Add()
         {
-            Zakaznik zakaznik = new Zakaznik("Ondřej", "Pokorný", 0005131234, 734795453);
+            Zakaznik zakaznik = new Zakaznik("Nový", "Zákazník", 0, 0);
             zakaznici.Add(zakaznik);
             _vybranyZakaznik = zakaznik;
             OnPropertyChanged("VybranyZakaznik");

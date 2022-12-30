@@ -35,7 +35,7 @@ namespace SemPracePokorny.ViewModel
         [RelayCommand]
         private void Add()
         {
-            Pobocka pobocka = new Pobocka("Pardubice", "Češkova", 1596, 53002);
+            Pobocka pobocka = new Pobocka("Nová pobočka", "Nová pobočka", 0, 0);
             pobocky.Add(pobocka);
             _vybranaPobocka = pobocka;
             OnPropertyChanged("VybranaPobocka");
@@ -83,7 +83,7 @@ namespace SemPracePokorny.ViewModel
         {
             if(_vybranaPobocka!=null)
             {
-                KnihaViewModel knihaVM = new KnihaViewModel(_vybranaPobocka.Knihy);
+                KnihaViewModel knihaVM = new KnihaViewModel(_vybranaPobocka.Knihy, _vybranaPobocka.Zakaznici);
                 KnihaView knihaV = new KnihaView();
                 knihaV.DataContext = knihaVM;
                 knihaV.Show();

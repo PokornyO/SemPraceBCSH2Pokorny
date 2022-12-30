@@ -28,3 +28,5 @@ C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\KnihaView.baml
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\ZakaznikView.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\ZakaznikView.baml
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\VypujceniView.g.cs
+C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\VypujceniView.baml

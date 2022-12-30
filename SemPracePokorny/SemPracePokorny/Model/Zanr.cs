@@ -14,6 +14,7 @@ namespace SemPracePokorny.Model
        SCIFI,
        Horor,
        Klasická,
-       Poezie
+       Poezie,
+       Ostatní
     }
 }

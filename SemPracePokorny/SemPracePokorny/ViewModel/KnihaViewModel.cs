@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SemPracePokorny.Model;
+using SemPracePokorny.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,11 +21,13 @@ namespace SemPracePokorny.ViewModel
         public ObservableCollection<Kniha> knihy;
         [ObservableProperty]
         private Zanr? zanrFiltr;
+        private ObservableCollection<Zakaznik> zakaznici;
 
 
-        public KnihaViewModel(ObservableCollection<Kniha> knihyPobocky)
+        public KnihaViewModel(ObservableCollection<Kniha> knihyPobocky, ObservableCollection<Zakaznik> zakazniciPobocky)
         {
             knihy= knihyPobocky;
+            zakaznici = zakazniciPobocky;
             Kniha kniha = new Kniha("Harry Potter", "J.K.", "Rowling", Zanr.Fantasy);
             knihy.Add(kniha);
             OnPropertyChanged("Knihy");
@@ -37,11 +40,12 @@ namespace SemPracePokorny.ViewModel
         [RelayCommand]
         private void Add()
         {
-            Kniha kniha = new Kniha("Harry Potter", "J.K.", "Rowling", Zanr.Fantasy);
+            Kniha kniha = new Kniha("Nová kniha", "Nová kniha", "Nová kniha", Zanr.Ostatní);
             knihy.Add(kniha);
-            OnPropertyChanged("knihy");
+            OnPropertyChanged("Knihy");
             _vybranaKniha = kniha;
             OnPropertyChanged("VybranaKniha");
+            RemoveCommand.NotifyCanExecuteChanged();
 
 
         }
@@ -116,6 +120,31 @@ namespace SemPracePokorny.ViewModel
             {
                 knihy.Add(new Kniha("Harry Potter", "J.K.", "Rowling", Zanr.Fantasy));
                 OnPropertyChanged("Knihy");
+            }
+        }
+        [RelayCommand]
+        private void Borrow()
+        {
+            if(_vybranaKniha!= null && _vybranaKniha.Zakaznik == null)
+            {
+                VypujceniViewModel vypujceniVM = new VypujceniViewModel(zakaznici, _vybranaKniha);
+                VypujceniView vypujceniV = new VypujceniView();
+                vypujceniV.DataContext = vypujceniVM;
+                vypujceniV.ShowDialog();
+                OnPropertyChanged("VybranaKniha");
+                OnPropertyChanged("Kniy");
+                
+               
+            }
+        }
+        [RelayCommand]
+        private void Return()
+        {
+            if(_vybranaKniha!= null)
+            {
+                _vybranaKniha.Zakaznik = null;
+                OnPropertyChanged("VybranaKniha");
+                OnPropertyChanged("Kniy");
             }
         }
     }
