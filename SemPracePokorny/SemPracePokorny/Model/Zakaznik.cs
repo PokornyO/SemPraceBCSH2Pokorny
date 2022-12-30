@@ -13,12 +13,12 @@ namespace SemPracePokorny.Model
         public int Id { get; set; }
         public string Jmeno { get; set; }
         public string Prijmeni { get; set; }
-        public int RodneCislo { get; set; }
-        public int Telefon { get; set; }
+        public string RodneCislo { get; set; }
+        public string Telefon { get; set; }
 
         private static int idCount = 0;
 
-        public Zakaznik(string jmeno, string prijmeni, int rodneCislo, int telefon)
+        public Zakaznik(string jmeno, string prijmeni, string rodneCislo, string telefon)
         {
             this.Jmeno = jmeno;
             this.Prijmeni = prijmeni;
@@ -27,7 +27,7 @@ namespace SemPracePokorny.Model
             Id = idCount++;
             
         }
-        public Zakaznik(int fileID, string jmeno, string prijmeni, int rodneCislo, int telefon)
+        public Zakaznik(int fileID, string jmeno, string prijmeni, string rodneCislo, string telefon)
         {
             this.Jmeno = jmeno;
             this.Prijmeni = prijmeni;

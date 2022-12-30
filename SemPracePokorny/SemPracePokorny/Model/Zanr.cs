@@ -15,6 +15,9 @@ namespace SemPracePokorny.Model
        Horor,
        Klasická,
        Poezie,
+       Drama,
+       Román,
        Ostatní
+
     }
 }

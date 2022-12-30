@@ -21,8 +21,6 @@ C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.genruntimeconfig.cache
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\ref\SemPracePokorny.dll
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll
-C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\PobockaDetail.g.cs
-C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\PobockaDetail.baml
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\SemPracePokorny.csproj.CopyComplete
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\KnihaView.g.cs
 C:\Users\ondra\source\repos\SemPraceBCSH2Pokorny\SemPracePokorny\SemPracePokorny\obj\Debug\net6.0-windows\View\KnihaView.baml

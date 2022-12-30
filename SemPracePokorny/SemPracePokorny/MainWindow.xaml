@@ -7,7 +7,7 @@
         xmlns:views ="clr-namespace:SemPracePokorny.View"
         xmlns:VM ="clr-namespace:SemPracePokorny.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="Knihovna" Height="600" Width="800">
     <Window.DataContext>
         <VM:PobockaViewModel/>
     </Window.DataContext>
@@ -42,13 +42,33 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <views:PobockaDetail Grid.Row="2" DataContext="{Binding VybranaPobocka}" Margin="5,5,5,0" x:Name="detail" Height="160" VerticalAlignment="Top"/>
+            <Grid Name="grid1" DataContext="{Binding VybranaPobocka}" Grid.Row="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Content="Pobočka Id:" Grid.Column="0" Grid.Row="0"  Margin="3" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="0"   Margin="3" Name="idDetail" Text="{Binding Path=Id}" VerticalAlignment="Center"  />
+                <Label Content="Město:" Grid.Column="0" Grid.Row="1"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="1"   Margin="3" Name="mestoDetail" Text="{Binding Path=Mesto, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Ulice:" Grid.Column="0" Grid.Row="2"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="2"   Margin="3" Name="uliceDetail" Text="{Binding Path=Ulice, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Číslo popisné:" Grid.Column="0" Grid.Row="3"  Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="3"   Margin="3" Name="cisloPopDetail" Text="{Binding Path=CisloPopisne, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center"  />
+                <Label Content="Psč:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" />
+                <TextBox Grid.Column="1" Grid.Row="4" Margin="3" Name="pscDetail" Text="{Binding Path=Psc, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" VerticalAlignment="Center" />
+            </Grid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" Width="426">
                 <Button Width="100" Height="25" Margin="5" Content="Přidej pobočku" Command="{Binding AddCommand}" />
                 <Button Width="100" Height="25" Margin="5" Content="Odeber pobočku" Command="{Binding RemoveCommand}" />
-                <Button Width="75" Height="25" Margin="5" Content="Save" Command="{Binding SaveCommand}" />
-                <Button x:Name="loadBtn" Content="Load" Width="75" Height="25" Margin="10,5" VerticalAlignment="Center" 
-                    Command="{Binding LoadCommand}" CommandParameter="{Binding ElementName=fileName,Path=Text}"/>
+                <Button Width="75" Height="25" Margin="5" Content="Ulož" Command="{Binding SaveCommand}" />
             </StackPanel>
 
         </Grid>

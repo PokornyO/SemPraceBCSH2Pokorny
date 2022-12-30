@@ -9,7 +9,7 @@
         xmlns:Model="clr-namespace:SemPracePokorny.Model"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="KnihaView" Height="550" Width="800">
+        Title="Knihy" Height="550" Width="800">
     <Window.Resources>
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
@@ -45,7 +45,7 @@
             <DataGrid AutoGenerateColumns="False" x:Name="master" CanUserAddRows="False" CanUserDeleteRows="True" Grid.Row="1" 
                   ItemsSource="{Binding Knihy}" SelectedItem="{Binding VybranaKniha, Mode=TwoWay}" Margin="0,7,0,8">
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="knihaId" Binding="{Binding Path=Id}" Header="Pobočka Id" Width="80" />
+                    <DataGridTextColumn x:Name="knihaId" Binding="{Binding Path=Id}" Header="Kniha Id" Width="80" />
                     <DataGridTextColumn x:Name="jmeno" Binding="{Binding Path=Nazev}" Header="Název" Width="160" />
                     <DataGridTextColumn x:Name="jmenoAutora" Binding="{Binding Path=JmenoAutora}" Header="Jméno autora" Width="160" />
                     <DataGridTextColumn x:Name="prijmeniAutora" Binding="{Binding Path=PrijmeniAutora}" Header="Příjmení autora" Width="160" />

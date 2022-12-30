@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,14 +26,14 @@ namespace SemPracePokorny.ViewModel
         private Pobocka? _vybranaPobocka;
         [ObservableProperty]
         public ObservableCollection<Pobocka> pobocky;
+        private string fileName = "Library.db";
         public PobockaViewModel()
         {
             pobocky = new ObservableCollection<Pobocka>();
-            Pobocka pobocka = new Pobocka("Pardubice", "Češkova", 1596, 53002);
-            Pobocky.Add(pobocka);
+            Load();
         }
 
-        
+       
 
         [RelayCommand]
         private void Add()
@@ -65,7 +66,8 @@ namespace SemPracePokorny.ViewModel
         [RelayCommand]
         private void Save()
         {
-            
+            SerializerDeserializer serializerDeserializerser = new SerializerDeserializer(pobocky, fileName);
+            serializerDeserializerser.Save();
         }
 
         [RelayCommand]
@@ -106,14 +108,37 @@ namespace SemPracePokorny.ViewModel
 
             }
         }
-        [RelayCommand]
-        private void Load(string fileName)
+        private void Load()
         {
-            if (!string.IsNullOrEmpty(fileName))
-            {
-                pobocky.Add(new Pobocka("Pardubice", "Češkova", 1596, 53002));
-                
+            SerializerDeserializer serializerDeserializer = new SerializerDeserializer(pobocky, "Library.db");
+            serializerDeserializer.Load();
+            int maxPobockaId = 0;
+            int maxZakaznikId = 0;
+            int maxKnihaId = 0;
+            foreach(Pobocka p in pobocky) {
+                if(p.Id > maxPobockaId)
+                {
+                    maxPobockaId = p.Id;
+                }
+                foreach(Kniha k in p.Knihy)
+                {
+                    if(k.Id > maxKnihaId)
+                    {
+                        maxKnihaId = k.Id;
+                    }
+                }
+                foreach (Zakaznik z in p.Zakaznici)
+                {
+                    if (z.Id > maxZakaznikId)
+                    {
+                        maxZakaznikId = z.Id;
+                    }
+                }
             }
+            Pobocka pob = new Pobocka(++maxPobockaId, "", "", 0, 0);
+            Zakaznik zak = new Zakaznik(++maxZakaznikId, "", "", "", "");
+            Kniha kni = new Kniha(++maxKnihaId, "", "", "", Zanr.Drama);
+            
         }
     }
 }

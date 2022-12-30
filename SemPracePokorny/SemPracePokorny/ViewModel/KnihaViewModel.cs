@@ -30,8 +30,6 @@ namespace SemPracePokorny.ViewModel
         {
             knihy= knihyPobocky;
             zakaznici = zakazniciPobocky;
-            Kniha kniha = new Kniha("Harry Potter", "J.K.", "Rowling", Zanr.Fantasy);
-            knihy.Add(kniha);
             OnPropertyChanged("Knihy");
         }
         
@@ -65,12 +63,16 @@ namespace SemPracePokorny.ViewModel
             }
         }
 
-        private bool IsBookSelected() => _vybranaKniha != null;
-
-        [RelayCommand]
-        private void Save()
+        private bool IsBookSelected() {
+            return _vybranaKniha != null;
+        } 
+        private bool IsBookAvaible()
         {
-
+            return _vybranaKniha != null && _vybranaKniha.Zakaznik == null;
+        }
+        private bool IsBookBorrowed()
+        {
+            return _vybranaKniha != null && _vybranaKniha.Zakaznik != null;
         }
 
         [RelayCommand]
@@ -117,16 +119,8 @@ namespace SemPracePokorny.ViewModel
             OnPropertyChanged("Knihy");
             OnPropertyChanged("ZanrFiltr");
         }
-        [RelayCommand]
-        private void Load(string fileName)
-        {
-            if (!string.IsNullOrEmpty(fileName))
-            {
-                knihy.Add(new Kniha("Harry Potter", "J.K.", "Rowling", Zanr.Fantasy));
-                OnPropertyChanged("Knihy");
-            }
-        }
-        [RelayCommand(CanExecute = "IsBookSelected")]
+       
+        [RelayCommand(CanExecute = "IsBookAvaible")]
         private void Borrow()
         {
             if(_vybranaKniha!= null && _vybranaKniha.Zakaznik == null)
@@ -138,18 +132,26 @@ namespace SemPracePokorny.ViewModel
                 _vybranaKniha = null;
                 OnPropertyChanged("VybranaKniha");
                 OnPropertyChanged("Kniy");
-                
-               
+                RemoveCommand.NotifyCanExecuteChanged();
+                BorrowCommand.NotifyCanExecuteChanged();
+                ReturnCommand.NotifyCanExecuteChanged();
+
+
             }
         }
-        [RelayCommand(CanExecute = "IsBookSelected")]
+        [RelayCommand(CanExecute = "IsBookBorrowed")]
         private void Return()
         {
             if(_vybranaKniha!= null)
             {
+                
                 _vybranaKniha.Zakaznik = null;
+                _vybranaKniha = null;
                 OnPropertyChanged("VybranaKniha");
                 OnPropertyChanged("Kniy");
+                RemoveCommand.NotifyCanExecuteChanged();
+                BorrowCommand.NotifyCanExecuteChanged();
+                ReturnCommand.NotifyCanExecuteChanged();
             }
         }
     }

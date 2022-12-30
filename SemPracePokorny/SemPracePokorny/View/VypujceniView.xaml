@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SemPracePokorny.View"
         mc:Ignorable="d"
         x:Name="VypujceniWindow"
-        Title="VypujceniView" Height="200" Width="300">
+        Title="Vypůjčení" Height="200" Width="300">
     
     <Grid Margin="0,0,0,-16">
         <ComboBox ItemsSource="{Binding Path=Zakaznici}" Margin="0,48,0,0" Name="zakaznik" SelectedItem="{ Binding VybranyZakaznik, Mode=TwoWay}" VerticalAlignment="Top" Width="200" HorizontalAlignment="Center" />

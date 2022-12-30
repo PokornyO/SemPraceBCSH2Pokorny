@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:SemPracePokorny.View"
         mc:Ignorable="d"
         x:Name="VypujceneKnihyWindow"
-        Title="VypujceneKnihyView" Height="420" Width="669">
+        Title="Vypůjčené knihy" Height="420" Width="669">
     <Grid Margin="0,0,0,-6">
         <DataGrid Height="250" AutoGenerateColumns="False" x:Name="master" CanUserAddRows="False" CanUserDeleteRows="True" 
                   ItemsSource="{Binding Knihy}" VerticalAlignment="Top">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="knihaId" Binding="{Binding Path=Id}" Header="Pobočka Id" Width="80" />
+                <DataGridTextColumn x:Name="knihaId" Binding="{Binding Path=Id}" Header="Kniha Id" Width="80" />
                 <DataGridTextColumn x:Name="jmeno" Binding="{Binding Path=Nazev}" Header="Název" Width="160" />
                 <DataGridTextColumn x:Name="jmenoAutora" Binding="{Binding Path=JmenoAutora}" Header="Jméno autora" Width="160" />
                 <DataGridTextColumn x:Name="prijmeniAutora" Binding="{Binding Path=PrijmeniAutora}" Header="Příjmení autora" Width="160" />

@@ -15,9 +15,9 @@ namespace SemPracePokorny.ViewModel
     {
         [ObservableProperty]
         private ObservableCollection<Kniha> knihy;
-        public VypKnihyViewModel(ObservableCollection<Kniha> zakaznici)
+        public VypKnihyViewModel(ObservableCollection<Kniha> knihy)
         {
-            this.knihy = zakaznici;
+            this.knihy = knihy;
             
         }
         [RelayCommand]
